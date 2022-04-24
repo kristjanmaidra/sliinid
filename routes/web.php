@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\TopicController;
+use App\Http\Controllers\HarbourController;
+use App\Http\Controllers\CameraController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -27,5 +30,32 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
+Route::group(['middleware'=>['auth:sanctum', 'verified']], function(){
+    Route::get('/topics', [TopicController::class, 'index'])->name('topics.index');
+    Route::get('/topics-create', [TopicController::class, 'create'])->name('topics.create');
+    Route::post('/topics', [TopicController::class, 'store'])->name('topics.store');
+
+    //Harbours
+    Route::get('/harbours', [HarbourController::class, 'index'])->name('harbours.index');
+    Route::get('/harbours-create', [HarbourController::class, 'create'])->name('harbours.create');
+    Route::post('/harbours', [HarbourController::class, 'store'])->name('harbours.store');
+
+    //Cameras
+    Route::get('/cameras', [CameraController::class, 'index'])->name('cameras.index');
+    Route::get('/cameras-create', [CameraController::class, 'create'])->name('cameras.create');
+    Route::post('/cameras', [CameraController::class, 'store'])->name('cameras.store');
+    Route::get('/cameras/{camera}/edit', [CameraController::class, 'edit'])->name('cameras.edit');
+    Route::post('/cameras/{camera}', [CameraController::class, 'update'])->name('cameras.update');
+    Route::delete('/cameras/{camera}', [CameraController::class, 'destroy']);
+});
+
+
+
+// Route::get('/topics', [TopicController::class, 'index'])->name('topics.index');
+// Route::resource('topics', 'App\Http\Controllers\TopicController');
+
 
 require __DIR__.'/auth.php';

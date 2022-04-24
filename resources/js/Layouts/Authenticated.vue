@@ -18,6 +18,15 @@
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </NavLink>
+                                <NavLink :href="route('topics.index')" :active="route().current('topics.index')">
+                                    Topics
+                                </NavLink>
+                                <NavLink :href="route('harbours.index')" :active="route().current('harbours.index')">
+                                    Sadamad
+                                </NavLink>
+                                <NavLink :href="route('cameras.index')" :active="route().current('cameras.index')">
+                                    Kaamerad
+                                </NavLink>
                             </div>
                         </div>
 
@@ -96,6 +105,7 @@
         </div>
     </div>
 </template>
+
 
 <script setup>
 import { inject, ref } from 'vue';
