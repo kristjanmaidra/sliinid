@@ -11,12 +11,11 @@
                     </div>
                 </div>
             </div>
-            <div class="py-12">
+            <div class="">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div class="p-6 bg-white border-b border-gray-200">
-                            <table class="w-full whitespace-no-wrapw-full whitespace-no-wrap">
-                                <thead>
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white">
+                            <table class="w-full text-sm text-left text-gray-900 dark:text-gray-900">
+                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr class="text-center font-bold">
                                         <td class="border">Nimi</td>
                                         <td class="border">IP</td>
@@ -26,10 +25,10 @@
                                         <td class="border">Fookuskaugus</td>
                                         <td class="border">Kirjeldus</td> <!--user_pw-->
                                         <td class="border">Pilt</td>
-                                        <td class="border"></td>
+                                        <td class="border">Action</td>
                                     </tr>
                                 </thead>
-                                <tr v-for="camera in cameras" :key="camera.id">
+                                <tr v-for="camera in cameras" :key="camera.id" class="">
                                     <td class="border px-6 py-1">{{ camera.name }}</td>
                                     <td class="border px-6 py-1">{{ camera.ip }}</td>
                                     <td class="border px-6 py-1">{{ camera.model }}</td>
@@ -38,15 +37,16 @@
                                     <td class="border px-6 py-1">{{ camera.focus_distance }}</td>
                                     <td class="border px-6 py-1">{{ camera.description }}</td>
                                     <td class="border px-6 py-1"><img :src="camera.image" class="w-12 h-12 rounded"></td>
-                                    <td class="border">
-                                        <button class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 inline-flex sm:ml-3 items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
+                                    <td class="border flex gap-2 justify-center">
+                                        <ButtonEdit>
                                             <Link :href="route('cameras.edit', camera.id)" key="camera.id" class="text-white">Muuda</Link>
-                                        </button>
-                                        <button @click="destroy(camera.id)" class="focus:ring-2 focus:ring-offset-2 focus:ring-red-700 inline-flex text-white sm:ml-3 items-start justify-start px-6 py-3 bg-red-700 hover:bg-red-500 focus:outline-none rounded">Eemalda</button>
+                                        </ButtonEdit>
+                                        <ButtonDelete @click="destroy(camera.id)">
+                                            Eemalda
+                                        </ButtonDelete>
                                     </td>
                                 </tr>
                             </table>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,8 @@
 export default { layoutName: "Authenticated",
     components: {
         Head,
-        Link
+        Link,
+        InertiaTable,
     },
     methods: {
          destroy(id) {
@@ -70,6 +71,7 @@ export default { layoutName: "Authenticated",
 };
 </script>
 <script setup>
+import InertiaTable from 'inertia-table'
 import { Head } from "@inertiajs/inertia-vue3";
 import { Link } from "@inertiajs/inertia-vue3"
 import { Inertia } from '@inertiajs/inertia';

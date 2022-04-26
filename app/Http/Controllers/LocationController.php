@@ -2,82 +2,72 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Harbour;
 use App\Models\Location;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Validation\Rule;
+use Inertia\Inertia;
 
 class LocationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
-        //
+        return Inertia::render('Locations/Index', [
+            'locations' => Location::all()->map(function($location) {
+                return [
+                    'id' => $location->id,
+                    'name' => $location->name,
+                ];
+            })           
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
-        //
+        return Inertia::render('Locations/Create', [
+            'harbours' => Harbour::all()
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
-        //
+        // Location::create([
+        //     'name' => Request::input('name'),
+        //     'harbour_id' => Request::input('harbour'),
+        // ]);
+
+        Location::create(
+            Request::validate([
+                'name' => ['required'],
+                'harbour_id' => ['nullable', Rule::exists('harbours', 'id')]
+            ]));
+
+        return Redirect::route('locations.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Location  $location
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show(Location $location)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Location  $location
-     * @return \Illuminate\Http\Response
-     */
+   
     public function edit(Location $location)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Location  $location
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, Location $location)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Location  $location
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy(Location $location)
     {
         //

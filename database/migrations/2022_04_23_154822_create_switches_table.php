@@ -19,9 +19,11 @@ return new class extends Migration
             $table->string('name');
             $table->integer('ip');
             $table->string('model');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->text('description');
-            $table->foreignIdFor(SwitchBoard::class)->constrained();
+            $table->foreignId('swithboard_id');
+            $table->foreignId('location_id');
+            $table->foreignId('harbour_id');
             $table->timestamps();
         });
     }

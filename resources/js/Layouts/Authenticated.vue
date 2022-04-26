@@ -1,17 +1,25 @@
 <template>
-    <div>
-        <div class="min-h-screen bg-gray-100">
+    <div class="flex h-screen">
+        <div class="pt-4">
+            <Link :href="route('dashboard')">
+                <ApplicationLogoBlue class="block h-9 w-auto" />
+            </Link>
+            <div class="h-screen w-64 bg-gray-300">
+                <div class="flex flex-col mt-3 pt-10 w-max">
+                    <tr class="" v-for="harbour in harbours" :key="harbour.id">
+                        <NavLink class="hover:bg-gray-200"><td class="w-64 px-6 py-4 hover:bg-gray-200">{{ harbour.name }}</td></NavLink>
+                    </tr>
+                </div>
+            </div>
+        </div>
+        <div class="w-full bg-gray-100">
             <nav class="bg-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
                         <div class="flex">
                             <!-- Logo -->
-                            <div class="shrink-0 flex items-center">
-                                <Link :href="route('dashboard')">
-                                    <ApplicationLogo class="block h-9 w-auto" />
-                                </Link>
-                            </div>
+                            
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -23,6 +31,9 @@
                                 </NavLink>
                                 <NavLink :href="route('harbours.index')" :active="route().current('harbours.index')">
                                     Sadamad
+                                </NavLink>
+                                <NavLink :href="route('locations.index')" :active="route().current('locations.index')">
+                                    Asukohad
                                 </NavLink>
                                 <NavLink :href="route('cameras.index')" :active="route().current('cameras.index')">
                                     Kaamerad
@@ -38,7 +49,6 @@
                                         <span class="inline-flex rounded-md">
                                             <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                                                 {{ $page.props.auth.user.name }}
-
                                                 <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                                                 </svg>
@@ -112,6 +122,10 @@ import { inject, ref } from 'vue';
 import { Link } from '@inertiajs/inertia-vue3';
 
 const route = inject('route')
+
+defineProps({
+  harbours: Array
+})
 
 const showingNavigationDropdown = ref(false);
 </script>

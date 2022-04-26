@@ -75,7 +75,7 @@ import { Link } from "@inertiajs/inertia-vue3"
 import { useForm } from '@inertiajs/inertia-vue3'
 import { Inertia } from '@inertiajs/inertia'
 
-export default {
+export default { 
     components: {
         Head,
         Link

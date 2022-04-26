@@ -24,12 +24,12 @@ return new class extends Migration
             $table->integer('ip');
             $table->string('name');
             $table->string('model');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('view_angle');
             $table->foreignId('switche_id');
-            $table->foreignIdFor(Location::class)->constrained();
-            $table->foreignIdFor(SwitchBoard::class)->constrained();
-            $table->foreignIdFor(Harbour::class)->constrained();
+            $table->foreignId('location_id');
+            $table->foreignId('switchboard_id');
+            $table->foreignId('harbour_id');
             $table->integer('focus_distance');
             $table->decimal('price');
             $table->text('description');

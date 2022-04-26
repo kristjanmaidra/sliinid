@@ -56,7 +56,7 @@ class CameraController extends Controller
    
     public function show(Camera $camera)
     {
-        //
+        
     }
 
    
@@ -85,7 +85,7 @@ class CameraController extends Controller
         $data = Request::validate([
                 'name' => ['required'],
                 'ip' => ['required'],
-                'image' => ['required'],
+                'image' => ['nullable', 'image'],
                 'model' => ['required'],
                 'price' => ['required'],
                 'view_angle' => ['required'],
@@ -93,6 +93,11 @@ class CameraController extends Controller
                 'description' => ['required'],
             ]);
 
+            
+            // if (Request::file('image')) {
+            //     $camera->update(['image_path' => Request::file('image')->store('cameras', 'public')]);
+            // }
+            
             $camera->update($data);
 
         // $camera->update([

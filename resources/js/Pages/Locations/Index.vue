@@ -1,12 +1,12 @@
 <template>
- <Head title="Harbours" />
+ <Head title="Locations" />
  <body class="px-4 py-8 flex items-center justify-center">
         <div class="xl:w-3/4 2xl:w-4/5 w-full">
             <div class="px-4 md:px-10 py-4 md:py-7">
                 <div class="sm:flex items-center justify-between">
                     <div class="mt-4 sm:mt-0">
                         <button class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 inline-flex sm:ml-3 items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
-                            <Link href="/harbours-create" class="text-white">Lisa sadam</Link>
+                            <Link href="/locations-create" class="text-white">Lisa asukoht</Link>
                         </button>
                     </div>
                 </div>
@@ -18,11 +18,11 @@
                             <table class="w-full whitespace-no-wrapw-full whitespace-no-wrap">
                                 <thead>
                                     <tr class="text-center font-bold">
-                                        <td class="border px-6 py-4">Sadam</td>
+                                        <td class="border px-6 py-4">Asukoht</td>
                                     </tr>
                                 </thead>
-                                <tr v-for="harbour in harbours" :key="harbour.id">
-                                    <td class="border px-6 py-4">{{ harbour.name }}</td>
+                                <tr v-for="location in locations" :key="location.id">
+                                    <td class="border px-6 py-4">{{ location.name }}</td>
                                 </tr>
                             </table>
                         </div>
@@ -45,6 +45,6 @@ import { Head } from "@inertiajs/inertia-vue3";
 import { Link } from "@inertiajs/inertia-vue3"
 
 defineProps({
-  harbours: Array
+  locations: Array
 })
 </script>

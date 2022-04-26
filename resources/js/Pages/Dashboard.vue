@@ -27,10 +27,10 @@ export default { layoutName: "Authenticated",
 import { Head } from "@inertiajs/inertia-vue3";
 import { Link } from "@inertiajs/inertia-vue3"
 
-// // defineProps({
-// //   topics: Array,
-
+// defineProps({
+//   harbours: Array
 // })
+
 </script>
 
 

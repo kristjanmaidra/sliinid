@@ -17,8 +17,9 @@ return new class extends Migration
         Schema::create('switch_boards', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image');
-            $table->foreignIdFor(Location::class)->constrained();
+            $table->string('image')->nullable();
+            $table->foreignId('location_id');
+            $table->foreignId('harbour_id');
             $table->timestamps();
         });
     }

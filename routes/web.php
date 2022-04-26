@@ -3,6 +3,7 @@
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\HarbourController;
 use App\Http\Controllers\CameraController;
+use App\Http\Controllers\LocationController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -43,13 +44,18 @@ Route::group(['middleware'=>['auth:sanctum', 'verified']], function(){
     Route::get('/harbours-create', [HarbourController::class, 'create'])->name('harbours.create');
     Route::post('/harbours', [HarbourController::class, 'store'])->name('harbours.store');
 
+    //Locations
+    Route::get('/locations', [LocationController::class, 'index'])->name('locations.index');
+    Route::get('/locations-create', [LocationController::class, 'create'])->name('locations.create');
+    Route::post('/locations', [LocationController::class, 'store'])->name('locations.store');
+
     //Cameras
     Route::get('/cameras', [CameraController::class, 'index'])->name('cameras.index');
     Route::get('/cameras-create', [CameraController::class, 'create'])->name('cameras.create');
     Route::post('/cameras', [CameraController::class, 'store'])->name('cameras.store');
     Route::get('/cameras/{camera}/edit', [CameraController::class, 'edit'])->name('cameras.edit');
     Route::post('/cameras/{camera}', [CameraController::class, 'update'])->name('cameras.update');
-    Route::delete('/cameras/{camera}', [CameraController::class, 'destroy']);
+    Route::delete('/cameras/{camera}', [CameraController::class, 'destroy'])->name('cameras.destroy');
 });
 
 
