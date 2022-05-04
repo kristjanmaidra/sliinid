@@ -19,10 +19,14 @@
                                 <thead>
                                     <tr class="text-center font-bold">
                                         <td class="border px-6 py-4">Asukoht</td>
+                                        <td class="border px-6 py-4">Sadam</td>
                                     </tr>
                                 </thead>
                                 <tr v-for="location in locations" :key="location.id">
                                     <td class="border px-6 py-4">{{ location.name }}</td>
+                                </tr>
+                                <tr>
+
                                 </tr>
                             </table>
                         </div>
@@ -44,7 +48,14 @@ export default { layoutName: "Authenticated",
 import { Head } from "@inertiajs/inertia-vue3";
 import { Link } from "@inertiajs/inertia-vue3"
 
-defineProps({
-  locations: Array
-})
+const props = defineProps({
+    locations: {
+        type: Array, 
+        default: null,
+    },
+    harbours: {
+        type: Array,
+        default: null,
+    }
+});
 </script>

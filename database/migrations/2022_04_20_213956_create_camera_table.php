@@ -1,9 +1,6 @@
 <?php
 
-use App\Models\Harbour;
-use App\Models\Location;
-use App\Models\SwitchBoard;
-use App\Models\Switche;
+use App\Models\Switches;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -24,12 +21,12 @@ return new class extends Migration
             $table->integer('ip');
             $table->string('name');
             $table->string('model');
+            $table->string('username');
+            $table->string('password');
+            $table->string('location');
             $table->string('image')->nullable();
             $table->string('view_angle');
-            $table->foreignId('switche_id');
-            $table->foreignId('location_id');
-            $table->foreignId('switchboard_id');
-            $table->foreignId('harbour_id');
+            $table->foreignId(Switches::class);
             $table->integer('focus_distance');
             $table->decimal('price');
             $table->text('description');

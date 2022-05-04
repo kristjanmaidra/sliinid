@@ -43,6 +43,7 @@ class CameraController extends Controller
         Camera::create([
             'name' => Request::input('name'),
             'ip' => Request::input('ip'),
+            'username' => Request::input('username'),
             'image' => $image,
             'model' => Request::input('model'),
             'price' => Request::input('price'),
@@ -63,19 +64,7 @@ class CameraController extends Controller
     public function edit(Camera $camera)
     {
         return Inertia::render('Cameras/Edit', compact('camera'));
-        // return Inertia::render('Cameras/Edit', [
-        //     'camera' => [
-        //         'id' => $camera->id,
-        //         'name' => $camera->name,
-        //         'description' => $camera->description,
-        //         'ip' =>  $camera->ip,
-        //         'image' => $camera->image,
-        //         'model' => $camera->model,
-        //         'price' => $camera->price,
-        //         'view_angle' => $camera->view_angle,
-        //         'focus_distance' => $camera->focus_distance,
-        //     ]
-        // ]);
+
     }
 
  
@@ -95,21 +84,11 @@ class CameraController extends Controller
 
             
             // if (Request::file('image')) {
-            //     $camera->update(['image_path' => Request::file('image')->store('cameras', 'public')]);
+            //     $camera->update(['image' => Request::file('image')->store('cameras', 'public')]);
             // }
             
             $camera->update($data);
 
-        // $camera->update([
-        //     'name' => $request->name,
-        //     'ip' => $request->ip,
-        //     'image' => $request->image,
-        //     'model' => $request->model,
-        //     'price' => $request->price,
-        //     'view_angle' => $request->view_angle,
-        //     'focus_distance' => $request->focus_distance,
-        //     'description' => $request->description,
-        // ]);
             return Redirect::route('cameras.index');
     }
 
@@ -117,7 +96,6 @@ class CameraController extends Controller
     public function destroy(Camera $camera)
     {
         $camera->delete();
-        return Redirect::route('cameras.index')->with('success', 'Kaamera eemaldatud.');
-        // return Redirect::route('cameras.index');
+        return Redirect::route('cameras.index');
     }
 }

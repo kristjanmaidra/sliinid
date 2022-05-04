@@ -5,48 +5,41 @@ namespace App\Http\Controllers;
 use App\Models\Harbour;
 use App\Models\Location;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Request;
-use Illuminate\Validation\Rule;
 use Inertia\Inertia;
+use Illuminate\Http\Request;
 
 class LocationController extends Controller
 {
     
     public function index()
     {
+        $harbours = Harbour::all();
+        // dd($harbours);
         return Inertia::render('Locations/Index', [
-            'locations' => Location::all()->map(function($location) {
-                return [
-                    'id' => $location->id,
-                    'name' => $location->name,
-                ];
-            })           
+            'locations' => Location::with('harbours')->get()
         ]);
     }
 
     
-    public function create()
+    public function create(Harbour $harbour)
     {
         return Inertia::render('Locations/Create', [
-            'harbours' => Harbour::all()
+            'harbour' => $harbour
         ]);
     }
 
     
-    public function store(Request $request)
+    public function store(Harbour $harbour, Request $request)
     {
-        // Location::create([
-        //     'name' => Request::input('name'),
-        //     'harbour_id' => Request::input('harbour'),
-        // ]);
 
-        Location::create(
-            Request::validate([
-                'name' => ['required'],
-                'harbour_id' => ['nullable', Rule::exists('harbours', 'id')]
-            ]));
+        $harbour->locations()->create([
+            'name' => $request->name
+        ]);
 
-        return Redirect::route('locations.index');
+        // return redirect()->back();
+        
+
+        return Redirect::route('harbours.show', $harbour);
     }
 
     
@@ -71,5 +64,14 @@ class LocationController extends Controller
     public function destroy(Location $location)
     {
         //
+    }
+    public function test(Harbour $harbour, Request $request) 
+    {
+        // dd($request);
+        // $harbour->locations()->create([
+        //     'name' => $request->name
+        // ]);
+
+        // return redirect()->back();
     }
 }

@@ -42,7 +42,10 @@ Route::group(['middleware'=>['auth:sanctum', 'verified']], function(){
     //Harbours
     Route::get('/harbours', [HarbourController::class, 'index'])->name('harbours.index');
     Route::get('/harbours-create', [HarbourController::class, 'create'])->name('harbours.create');
-    Route::post('/harbours', [HarbourController::class, 'store'])->name('harbours.store');
+    // Route::post('/harbours', [HarbourController::class, 'store'])->name('harbours.store');
+    Route::get('/harbours/{harbour}', [HarbourController::class, 'show'])->name('harbours.show');
+    Route::get('/harbours/{harbour}/location-create', [LocationController::class, 'create'])->name('harbours.location.create');
+    Route::post('/harbours/{harbour}/location-create', [LocationController::class, 'store'])->name('harbours.location.store');
 
     //Locations
     Route::get('/locations', [LocationController::class, 'index'])->name('locations.index');

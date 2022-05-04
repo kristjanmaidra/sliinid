@@ -18,8 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('image')->nullable();
-            $table->foreignId('location_id');
-            $table->foreignId('harbour_id');
+            $table->foreignIdFor(Location::class)->constrained();
             $table->timestamps();
         });
     }

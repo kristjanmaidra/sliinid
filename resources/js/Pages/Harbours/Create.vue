@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="grid place-content-center mt-10">
-            <form @submit.prevent="storeHarbour" class="bg-white shadow-md m-2 p-2 rounded" action="">
+            <form @submit.prevent="submit" class="bg-white shadow-md m-2 p-2 rounded" action="">
                 <div class="sm:col-span-6">
                     <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
                     <div>
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div>
-                    <button type="submit" class="px-4 py-2 bg-green-400 hover:bg-green-600 rounded-lg text-white">Submit</button>
+                    <button type="submit" class="mt-2 px-4 py-2 bg-green-700 hover:bg-green-600 rounded-lg text-white">Submit</button>
                 </div>
             </form>
         </div>
@@ -35,11 +35,11 @@ import { Link } from "@inertiajs/inertia-vue3";
 import { useForm } from '@inertiajs/inertia-vue3'
 
 
-const form = useForm({
+const form = useForm({ 
       name: null,
     });
 
-    function storeHarbour() {
+    const submit = () => {
       form.post('/harbours')
     }
 

@@ -58,11 +58,11 @@
                 <div class="sm:col-span-6">
                     <label for="title" class="block text-sm font-medium text-gray-700"></label>
                     <div>
-                        <input type="file" @input="form.image = $event.target.files[0]" id="image" name="image" class="block w-full transition duration-150 ease-in-out">
+                        <input type="file" @input="form.image = $event.target.files[0]" id="image" name="image" class="mt-2 block w-full transition duration-150 ease-in-out">
                     </div>
                 </div>
                 <div>
-                    <button type="submit" class="px-4 py-2 bg-green-400 hover:bg-green-600 rounded-lg text-white">Lisa</button>
+                    <button type="submit" class="mt-2 px-4 py-2 bg-green-700 hover:bg-green-600 rounded-lg text-white">Lisa</button>
                 </div>
             </form>
         </div>

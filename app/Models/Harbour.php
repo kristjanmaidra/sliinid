@@ -10,10 +10,11 @@ class Harbour extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $guarded = [];
 
     public function locations()
     {
         return $this->hasMany(Location::class);
     }
+
 }
