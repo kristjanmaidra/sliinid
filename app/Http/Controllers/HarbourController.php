@@ -39,10 +39,17 @@ class HarbourController extends Controller
 
     
     public function show(Harbour $harbour)
-    {
-        //
-    }
 
+    {
+        // dd($harbour->locations);
+        return Inertia::render('Harbours/Show', [
+            'harbour' => $harbour,
+            'locations' => $harbour->locations,
+        ]);
+        
+
+
+    }
     
     public function edit(Harbour $harbour)
     {

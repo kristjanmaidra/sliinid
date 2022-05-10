@@ -16,53 +16,53 @@
                 <div class="sm:col-span-6">
                     <label for="name" class="block text-sm font-medium text-gray-700">Nimi</label>
                     <div>
-                        <input type="text" id="title" name="name" v-model="form.name" class="block w-full transition duration-150 ease-in-out">
+                        <Input type="text" id="title" name="name" v-model="form.name" class=" w-full" />
                     </div>
                 </div>
                 <div class="sm:col-span-6">
                     <label for="name" class="block text-sm font-medium text-gray-700">Mudel</label>
                     <div>
-                        <input type="text" id="title" name="name" v-model="form.model" class="block w-full transition duration-150 ease-in-out">
+                        <Input type="text" id="title" name="name" v-model="form.model" class="w-full" />
                     </div>
                 </div>
                 <div class="sm:col-span-6">
                     <label for="name" class="block text-sm font-medium text-gray-700">Hind</label>
                     <div>
-                        <input type="text" id="title" name="name" v-model="form.price" class="block w-full transition duration-150 ease-in-out">
+                        <Input type="text" id="title" name="name" v-model="form.price" class="w-full" />
                     </div>
                 </div>
                 <div class="sm:col-span-6">
                     <label for="name" class="block text-sm font-medium text-gray-700">IP</label>
                     <div>
-                        <input type="text" id="title" name="name" v-model="form.ip" class="block w-full transition duration-150 ease-in-out">
+                        <Input type="text" id="title" name="name" v-model="form.ip" class="w-full" />
                     </div>
                 </div>
                 <div class="sm:col-span-6">
                     <label for="name" class="block text-sm font-medium text-gray-700">Vaatenurk</label>
                     <div>
-                        <input type="text" id="title" name="name" v-model="form.view_angle" class="block w-full transition duration-150 ease-in-out">
+                        <Input type="text" id="title" name="name" v-model="form.view_angle" class=" w-full" />
                     </div>
                 </div>
                 <div class="sm:col-span-6">
                     <label for="name" class="block text-sm font-medium text-gray-700">Fookuskaugus</label>
                     <div>
-                        <input type="text" id="title" name="name" v-model="form.focus_distance" class="block w-full transition duration-150 ease-in-out">
+                        <Input type="text" id="title" name="name" v-model="form.focus_distance" class="w-full" />
                     </div>
                 </div>
                 <div class="sm:col-span-6">
                     <label for="description" class="block text-sm font-medium text-gray-700">Kirjeldus</label>
                     <div>
-                        <input type="text" id="title" name="description" v-model="form.description" class="block w-full transition duration-150 ease-in-out">
+                        <Input type="text" id="title" name="description" v-model="form.description" class="w-full" />
                     </div>
                 </div>
                 <div class="sm:col-span-6">
                     <label for="title" class="block text-sm font-medium text-gray-700"></label>
                     <div>
-                        <input type="file" @input="form.image = $event.target.files[0]" id="image" name="image" class="block w-full transition duration-150 ease-in-out">
+                        <input type="file" @input="form.image = $event.target.files[0]" id="image" name="image" class="mt-2 block w-full transition duration-150 ease-in-out">
                     </div>
                 </div>
                 <div>
-                    <button type="submit" class="px-4 py-2 bg-green-400 hover:bg-green-600 rounded-lg text-white">Lisa</button>
+                    <button type="submit" class="mt-2 px-4 py-2 bg-green-700 hover:bg-green-600 rounded-lg text-white">Lisa</button>
                 </div>
             </form>
         </div>
@@ -74,7 +74,7 @@ import { Link } from "@inertiajs/inertia-vue3"
 import { useForm } from '@inertiajs/inertia-vue3'
 import { Inertia } from '@inertiajs/inertia'
 
-export default {
+export default { layoutName: "Authenticated",
     components: {
         Head,
         Link

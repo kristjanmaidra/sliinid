@@ -23,6 +23,8 @@
         "vue-loader": "^16.1.2"
     },
     "dependencies": {
-        "@vitejs/plugin-vue": "^2.2.4"
+        "@googlemaps/js-api-loader": "^1.14.1",
+        "@vitejs/plugin-vue": "^2.2.4",
+        "inertia-table": "^0.1.6"
     }
 }

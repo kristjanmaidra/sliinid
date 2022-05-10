@@ -19,7 +19,12 @@ return new class extends Migration
             $table->string('name');
             $table->integer('ip');
             $table->string('model');
-            $table->string('image');
+            $table->string('ports');
+            $table->string('switch_ports'); //parent switch
+            $table->string('devices'); //switchi ühendatud seadmed
+            $table->string('username'); //switchi kasutaja
+            $table->string('password'); //switchi parool
+            $table->string('image')->nullable();
             $table->text('description');
             $table->foreignIdFor(SwitchBoard::class)->constrained();
             $table->timestamps();

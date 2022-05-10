@@ -12,7 +12,7 @@ class Camera extends Model
     use HasFactory;
 
 
-    // protected $guarded = [];
+    protected $guarded = [];
 
-    protected $fillable = ['name', 'image', 'model', 'price', 'view_angle', 'focus_distance', 'description', 'ip'];
+    // protected $fillable = ['name', 'image','username', 'model', 'price', 'view_angle', 'focus_distance', 'description', 'ip'];
 }

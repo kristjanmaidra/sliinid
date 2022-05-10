@@ -9,20 +9,20 @@
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
                                 <Link :href="route('dashboard')">
-                                    <ApplicationLogo class="block h-9 w-auto" />
+                                    <ApplicationLogoBlue class="block h-9 w-auto" />
                                 </Link>
                             </div>
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                                <!-- <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
-                                </NavLink>
-                                <NavLink :href="route('topics.index')" :active="route().current('topics.index')">
-                                    Topics
-                                </NavLink>
+                                </NavLink> -->
                                 <NavLink :href="route('harbours.index')" :active="route().current('harbours.index')">
                                     Sadamad
+                                </NavLink>
+                                <NavLink :href="route('locations.index')" :active="route().current('locations.index')">
+                                    Asukohad
                                 </NavLink>
                                 <NavLink :href="route('cameras.index')" :active="route().current('cameras.index')">
                                     Kaamerad
@@ -105,7 +105,6 @@
         </div>
     </div>
 </template>
-
 
 <script setup>
 import { inject, ref } from 'vue';
