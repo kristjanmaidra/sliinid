@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-[750px]">
+  <div class=" w-full h-[750px]">
     <div class="h-[750px]" id="map" ref="map"></div>
   </div>
 </template>

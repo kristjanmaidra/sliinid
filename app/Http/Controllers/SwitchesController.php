@@ -2,82 +2,70 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SwitchBoard;
 use App\Models\Switches;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Inertia\Inertia;
 
 class SwitchesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+   
+    public function create(SwitchBoard $switchboard)
     {
-        //
+        return Inertia::render('Switches/Create', [
+            'switchboard' => $switchboard
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    
+    public function store(SwitchBoard $switchboard, Request $request)
     {
-        //
-    }
+        $image = $request->file('image')->store('switches', 'public');
+        $switchboard->switches()->create([
+            'name' => $request->name,
+            'ip' => $request->ip,
+            'username' => $request->username,
+            'password' => $request->password,
+            'model' => $request->model,
+            'devices' => $request->devices,
+            'switch_ports' => $request->switch_ports,
+            'description' => $request->description,
+            'ports' => $request->ports,
+            'image' => $image,
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Switches  $switches
-     * @return \Illuminate\Http\Response
-     */
+        return Redirect::route('switchboards.show', $switchboard);
+    }
+    
     public function show(Switches $switches)
     {
-        //
+        // dd($switches);
+        return Inertia::render('Switches/Show', [
+            'switches' => $switches,
+            'cameras' => $switches->cameras,
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Switches  $switches
-     * @return \Illuminate\Http\Response
-     */
+   
     public function edit(Switches $switches)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Switches  $switches
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, Switches $switches)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Switches  $switches
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy(Switches $switches)
     {
         //

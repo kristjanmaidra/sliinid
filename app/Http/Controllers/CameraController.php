@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Camera;
+use App\Models\Switches;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class CameraController extends Controller
@@ -15,13 +16,11 @@ class CameraController extends Controller
         return Inertia::render('Cameras/Index', [
             'cameras' => Camera::all()->map(function($camera) {
                 return [
-                    'id' => $camera->id,
                     'ip' => $camera->ip,
                     'name' => $camera->name,
                     'description' => $camera->description,
                     'image' => asset('storage/'. $camera->image),
                     'model' => $camera->model,
-                    'switche_id' => $camera->switche_id,
                     'price' => $camera->price,
                     'view_angle' => $camera->view_angle,
                     'focus_distance' => $camera->focus_distance,
@@ -31,27 +30,32 @@ class CameraController extends Controller
     }
 
    
-    public function create()
+    public function create(Switches $switches)
     {
-        return Inertia::render('Cameras/Create');
+        return Inertia::render('Cameras/Create', [
+            'switches' => $switches
+        ]);
     }
 
     
-    public function store(Request $request)
+    public function store(Switches $switches, Request $request)
     {
-        $image = Request::file('image')->store('cameras', 'public');
-        Camera::create([
-            'name' => Request::input('name'),
-            'ip' => Request::input('ip'),
-            'username' => Request::input('username'),
+        // dd($switches);
+        $image = $request->file('image')->store('cameras', 'public');
+        $switches->cameras()->create([
+            'name' => $request->name,
+            'ip' => $request->ip,
+            'username' => $request->username,
+            'password' => $request->password,
             'image' => $image,
-            'model' => Request::input('model'),
-            'price' => Request::input('price'),
-            'view_angle' => Request::input('view_angle'),
-            'focus_distance' => Request::input('focus_distance'),
-            'description' => Request::input('description'),
+            'location' => $request->location,
+            'model' => $request->model,
+            'price' => $request->price,
+            'view_angle' => $request->view_angle,
+            'focus_distance' => $request->focus_distance,
+            'description' => $request->description,
         ]);
-        return Redirect::route('cameras.index');
+        return Redirect::route('switches.show,', $switches);
     }
 
    

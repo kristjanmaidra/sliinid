@@ -21,9 +21,9 @@
                                 <NavLink :href="route('harbours.index')" :active="route().current('harbours.index')">
                                     Sadamad
                                 </NavLink>
-                                <NavLink :href="route('locations.index')" :active="route().current('locations.index')">
+                                <!-- <NavLink :href="route('locations.index')" :active="route().current('locations.index')">
                                     Asukohad
-                                </NavLink>
+                                </NavLink> -->
                                 <NavLink :href="route('cameras.index')" :active="route().current('cameras.index')">
                                     Kaamerad
                                 </NavLink>

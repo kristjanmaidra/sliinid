@@ -24,12 +24,16 @@
                                     </tr>
                                 </thead>
                                 <tr class="border-b-2 border-t-2" v-for="location in locations" :key="location.id">
-                                    <td class=" px-6 text-gray-700 font-semibold">{{ location.name }}</td>
+                                    <td class="">
+                                        <Link class="p-1 justify-center hover:bg-blue-200" :href="route('locations.show', location.id)" key="location.id">
+                                            {{ location.name }}
+                                        </Link>
+                                    </td>
                                     <td class=" flex justify-end">
                                         <ButtonEdit class="mr-2">
                                             <Link >Muuda</Link>
                                         </ButtonEdit>
-                                        <ButtonDelete @click="destroy(camera.id)">
+                                        <ButtonDelete @click="destroy(location.id)">
                                             Eemalda
                                         </ButtonDelete>
                                     </td>
@@ -64,5 +68,5 @@ const props = defineProps({
         type: Object,
     }
 });
-console.log(props.locations)
+// console.log(props.locations)
 </script>

@@ -5,7 +5,7 @@
                 <div class="sm:flex items-center justify-between">
                     <div class="mt-4 sm:mt-0">
                         <button class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 inline-flex sm:ml-3 items-start justify-end px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
-                            <Link :href="route('harbours.show', harbour.id)" class="text-white">Tagasi</Link>
+                            <Link :href="route('locations.show', location.id)" class="text-white">Tagasi</Link>
                         </button>
                     </div>
                 </div>
@@ -38,9 +38,10 @@ import { inject } from '@vue/runtime-core';
 
 const route = inject('route')
 const props = defineProps({
-   harbour: {
+   location: {
         type: Object,
-    }
+    },
+
 })
 
 const form = useForm({
@@ -51,7 +52,7 @@ const form = useForm({
     });
 
 const submit = () => {
-    form.post(route('harbours.location.store', props.harbour.id))
+    form.post(route('locations.switchboard.store', props.location.id))
 }
     
 

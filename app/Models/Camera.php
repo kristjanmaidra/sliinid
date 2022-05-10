@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Nette\SmartObject;
+use App\Models\Switches;
+
 
 class Camera extends Model
 {
@@ -13,6 +13,12 @@ class Camera extends Model
 
 
     protected $guarded = [];
+    // protected $fillable = ['name', 'switches_id', 'image','username', 'password', 'location',  'model', 'price', 'view_angle', 'focus_distance', 'description', 'ip'];
 
-    // protected $fillable = ['name', 'image','username', 'model', 'price', 'view_angle', 'focus_distance', 'description', 'ip'];
+    public function switches()
+    {
+        return $this->belongsTo(Switches::class);
+    }
+
 }
+

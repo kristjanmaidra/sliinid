@@ -5,13 +5,13 @@
                 <div class="sm:flex items-center justify-between">
                     <div class="mt-4 sm:mt-0">
                         <button class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 inline-flex sm:ml-3 items-start justify-end px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
-                            <Link :href="route('switches.show', switches.id)" class="text-white">Tagasi</Link>
+                            <Link :href="route('switchboards.show', switchboard.id)" class="text-white">Tagasi</Link>
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-        <p>Lisa kaamera</p>
+        <p>Lisa switch</p>
         <div class="grid place-content-center mt-10">
             <form @submit.prevent="submit" enctype="multipart/form-data" class="bg-white shadow-md m-2 p-2 rounded" action="">
                 <div class="grid grid-cols-3 gap-2 sm:col-span-6">
@@ -36,24 +36,20 @@
                         <Input type="text" id="" name="model" v-model="form.model" class="w-full" />
                     </div>
                     <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700">Asukoht</label>
-                        <Input type="text" id="" name="location" v-model="form.location" class="w-full" />
+                        <label for="name" class="block text-sm font-medium text-gray-700">Ühendatud seadmed</label>
+                        <Input type="text" id="" name="devices" v-model="form.devices" class="w-full" />
                     </div>
                     <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700">Fookuskaugus</label>
-                        <Input type="text" id="" name="focus_distance" v-model="form.focus_distance" class="w-full" />
+                        <label for="name" class="block text-sm font-medium text-gray-700">Kuhu ühendatud</label>
+                        <Input type="text" id="" name="switch_ports" v-model="form.switch_ports" class="w-full" />
                     </div>
                     <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700">Hind</label>
-                        <Input type="text" id="" name="price" v-model="form.price" class="w-full" />
+                        <label for="name" class="block text-sm font-medium text-gray-700">Pordid</label>
+                        <Input type="text" id="" name="switch_ports" v-model="form.ports" class="w-full" />
                     </div>
                     <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700">Kirjeldus</label>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Hoolduse logi</label>
                         <Input type="text" id="" name="description" v-model="form.description" class="w-full" />
-                    </div>
-                    <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700">Vaatenurk</label>
-                        <Input type="text" id="" name="view_angle" v-model="form.view_angle" class="w-full" />
                     </div>
                 </div>
                 <div>
@@ -65,42 +61,40 @@
         </div>
     </body>
 </template>
-
 <script>
 export default { layoutName: "Authenticated",
 };
 
 </script>
-
 <script setup>
-import { Head } from "@inertiajs/inertia-vue3"
-import { Link } from "@inertiajs/inertia-vue3"
+import { Head } from "@inertiajs/inertia-vue3";
+import { Link } from "@inertiajs/inertia-vue3";
 import { useForm } from '@inertiajs/inertia-vue3'
 import { inject } from '@vue/runtime-core';
 
 const route = inject('route')
 const props = defineProps({
-   switches: {
+   switchboard: {
         type: Object,
     },
 
 })
 
 const form = useForm({
-        name: "",
-        image: "",
-        username: "",
-        password: "",
-        location: "",
-        description: "",
-        model: "",
-        price: "",
-        view_angle: "",
-        focus_distance: "",
-        ip: "",
+      name: "",
+      ip: "",
+      username: "",
+      password: "",
+      ports: "",
+      model: "",
+      devices: "",
+      switch_ports: "",
+      description: "",
+      image: "",
     });
 
 const submit = () => {
-    form.post(route('cameras.store'))
+    form.post(route('switchboards.switches.store', props.switchboard.id))
 }
+
 </script>
