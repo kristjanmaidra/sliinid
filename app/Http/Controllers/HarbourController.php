@@ -18,11 +18,10 @@ class HarbourController extends Controller
                     'id' => $harbour->id,
                     'name' => $harbour->name,
                 ];
-            })           
+            })
         ]);
     }
 
-    
     public function create()
     {
         return Inertia::render('Harbours/Create');
@@ -34,7 +33,7 @@ class HarbourController extends Controller
         Harbour::create([
             'name' => Request::input('name'),
         ]);
-        return Redirect::route('harbours.index')->with('message', 'Sadam lisatud!');
+        return Redirect::route('harbours.index');
     }
 
     

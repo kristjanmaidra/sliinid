@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('location');
             $table->string('image')->nullable();
             $table->string('view_angle');
-            $table->foreignId(Switches::class);
+            $table->foreignIdFor(Switches::class)->constrained;
             $table->integer('focus_distance');
             $table->decimal('price');
             $table->text('description');

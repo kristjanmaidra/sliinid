@@ -4,6 +4,8 @@ use App\Http\Controllers\TopicController;
 use App\Http\Controllers\HarbourController;
 use App\Http\Controllers\CameraController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\SwitchBoardController;
+use App\Http\Controllers\SwitchesController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -42,29 +44,58 @@ Route::group(['middleware'=>['auth:sanctum', 'verified']], function(){
     //Harbours
     Route::get('/harbours', [HarbourController::class, 'index'])->name('harbours.index');
     Route::get('/harbours-create', [HarbourController::class, 'create'])->name('harbours.create');
-    // Route::post('/harbours', [HarbourController::class, 'store'])->name('harbours.store');
+    Route::post('/harbours', [HarbourController::class, 'store'])->name('harbours.store');
     Route::get('/harbours/{harbour}', [HarbourController::class, 'show'])->name('harbours.show');
+
     Route::get('/harbours/{harbour}/location-create', [LocationController::class, 'create'])->name('harbours.location.create');
     Route::post('/harbours/{harbour}/location-create', [LocationController::class, 'store'])->name('harbours.location.store');
 
     //Locations
-    Route::get('/locations', [LocationController::class, 'index'])->name('locations.index');
+    // Route::get('/locations', [LocationController::class, 'index'])->name('locations.index');
     Route::get('/locations-create', [LocationController::class, 'create'])->name('locations.create');
     Route::post('/locations', [LocationController::class, 'store'])->name('locations.store');
+    Route::get('/locations/{location}', [LocationController::class, 'show'])->name('locations.show');
 
+    Route::get('/locations/{location}/switchboard-create', [SwitchBoardController::class, 'create'])->name('locations.switchboard.create');
+    Route::post('/locations/{location}/switchboard-create', [SwitchBoardController::class, 'store'])->name('locations.switchboard.store');
+    // Route::get('/locations/{location}/switchboard-edit', [SwitchBoardController::class, 'edit'])->name('locations.switchboard.edit');
+
+    //Switchboards
+    Route::get('/switchboards-create', [SwitchBoardController::class, 'create'])->name('switchboards.create');
+    Route::post('/switchboards', [SwitchBoardController::class, 'store'])->name('switchboards.store');
+    Route::get('/switchboards/{switchboard}', [SwitchBoardController::class, 'show'])->name('switchboards.show');
+    Route::get('/switchboards/{switchboard}/edit', [SwitchboardController::class, 'edit'])->name('switchboards.edit');
+    Route::post('/switchboards/{switchboard}', [SwitchboardController::class, 'update'])->name('switchboards.update');
+    Route::post('/switchboards/{switchboard}', [SwitchboardController::class, 'destory'])->name('switchboard.delete');
+
+
+    Route::get('/switchboards/{switchboard}/switches-create', [SwitchesController::class, 'create'])->name('switchboards.switches.create');
+    Route::post('/switchboards/{switchboard}/switches-create', [SwitchesController::class, 'store'])->name('switchboards.switches.store');
+    
+    //Switches
+    Route::get('/switches-create', [SwitchesController::class, 'create'])->name('switches.create');
+    Route::post('/switches', [SwitchesController::class, 'store'])->name('switches.store');
+    Route::get('/switches/{switches}', [SwitchesController::class, 'show'])->name('switches.show');
+
+    Route::get('/switches/{switches}/camera-create', [CameraController::class, 'create'])->name('switches.camera.create');
+    Route::post('/switches/{switches}/camera-create', [CameraController::class, 'store'])->name('switches.camera.store');
+    
     //Cameras
     Route::get('/cameras', [CameraController::class, 'index'])->name('cameras.index');
     Route::get('/cameras-create', [CameraController::class, 'create'])->name('cameras.create');
     Route::post('/cameras', [CameraController::class, 'store'])->name('cameras.store');
     Route::get('/cameras/{camera}/edit', [CameraController::class, 'edit'])->name('cameras.edit');
     Route::post('/cameras/{camera}', [CameraController::class, 'update'])->name('cameras.update');
+    Route::post('/cameras/{camera}', [CameraController::class, 'show'])->name('cameras.show');
     Route::delete('/cameras/{camera}', [CameraController::class, 'destroy'])->name('cameras.destroy');
+
+    // Route::get('/cameras/{camera}/switches-create', [CameraController::class, 'create'])->name('cameras.switches.create');
+    // Route::post('/cameras/{camera}/switches-create', [CameraController::class, 'store'])->name('cameras.switches.store');
 });
 
 
 
-// Route::get('/topics', [TopicController::class, 'index'])->name('topics.index');
-// Route::resource('topics', 'App\Http\Controllers\TopicController');
+
 
 
 require __DIR__.'/auth.php';

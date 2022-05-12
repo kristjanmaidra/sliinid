@@ -1,7 +1,7 @@
 <template>
  <Head title="Harbours" />
  <body class="px-4 py-8 flex items-center justify-center">
-        <div class="xl:w-3/4 2xl:w-4/5 w-full">
+        <div class="max-w-4xl  xl:w-3/4 2xl:w-4/5 w-full">
             <div class="px-4 md:px-10 py-4 md:py-7">
                 <div class="sm:flex items-center justify-between">
                     <div class="mt-4 sm:mt-0">
@@ -11,19 +11,19 @@
                     </div>
                 </div>
             </div>
-            <div class="py-12">
+            <div class="py-4">
                 <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 bg-white border-b border-gray-200">
                             <table class="w-full whitespace-no-wrapw-full whitespace-no-wrap">
                                 <thead>
                                     <tr class="text-center font-bold">
-                                        <td class="border px-6 py-4">Sadam</td>
+                                        <td class="px-6 py-4 text-xl text-blue-900">Sadam</td>
                                     </tr>
                                 </thead>
-                                <tr v-for="harbour in harbours" :key="harbour.id">
-                                    <td class="border px-6 py-4">
-                                        <Link class="flex items-center justify-center" :href="route('harbours.show', harbour.id)" key="harbour.id">
+                                <tr class="border-b-2 border-t-2" v-for="harbour in harbours" :key="harbour.id">
+                                    <td class="">
+                                        <Link class="flex items-center p-1 justify-center hover:bg-blue-200 text-sm font-semibold" :href="route('harbours.show', harbour.id)" key="harbour.id">
                                             {{ harbour.name }}
                                         </Link>
                                     </td>
@@ -47,8 +47,12 @@ export default { layoutName: "Authenticated",
 <script setup>
 import { Head } from "@inertiajs/inertia-vue3";
 import { Link } from "@inertiajs/inertia-vue3"
+import { inject } from '@vue/runtime-core';
 
-defineProps({
-  harbours: Array
+const route = inject("route")
+const props = defineProps({
+    harbours: {
+        type: Array,
+    }
 })
 </script>

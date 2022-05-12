@@ -13,10 +13,14 @@ class LocationController extends Controller
     
     public function index()
     {
-        $harbours = Harbour::all();
         // dd($harbours);
         return Inertia::render('Locations/Index', [
-            'locations' => Location::with('harbours')->get()
+            'locations' => Location::all()->map(function($location) {
+                return [
+                    'id' => $location->id,
+                    'name' => $location->name,
+                ];
+            })
         ]);
     }
 
@@ -35,17 +39,19 @@ class LocationController extends Controller
         $harbour->locations()->create([
             'name' => $request->name
         ]);
-
-        // return redirect()->back();
-        
-
+    
         return Redirect::route('harbours.show', $harbour);
     }
 
     
     public function show(Location $location)
     {
-        //
+        // dd($location);
+
+        return Inertia::render('Locations/Show', [
+            'location' => $location,
+            'switchboards' => $location->switchboards,
+        ]);
     }
 
    
