@@ -12,7 +12,8 @@ class Location extends Model
     use HasFactory;
 
     
-    protected $fillable = ['name', 'harbour_id'];
+    // protected $fillable = ['name', 'harbour_id'];
+    protected $guarded = [];
 
     public function harbours()
     {
@@ -24,4 +25,3 @@ class Location extends Model
         return $this->hasMany(SwitchBoard::class);
     }
 }
-

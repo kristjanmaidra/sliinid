@@ -30,10 +30,10 @@
                                     </td>
                                     <td class=" flex justify-end">
                                         <ButtonEdit class="mr-2">
-                                            <Link >Muuda</Link>
+                                            <Link :href="route('switchboards.edit', switchboard.id)" key="switchboard.id" >Muuda</Link>
                                         </ButtonEdit>
                                         <ButtonDelete @click="destroy(switchboard.id)">
-                                            Eemalda
+                                            <Link class="bg-red-500 text-white font-bold text-sm uppercase px-2 py-1 rounded" as="buttton" method="post" :href="route('switchboard.delete', switchboard.id)">Delete</Link>
                                         </ButtonDelete>
                                     </td>
                                 </tr>

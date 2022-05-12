@@ -58,11 +58,16 @@ Route::group(['middleware'=>['auth:sanctum', 'verified']], function(){
 
     Route::get('/locations/{location}/switchboard-create', [SwitchBoardController::class, 'create'])->name('locations.switchboard.create');
     Route::post('/locations/{location}/switchboard-create', [SwitchBoardController::class, 'store'])->name('locations.switchboard.store');
+    // Route::get('/locations/{location}/switchboard-edit', [SwitchBoardController::class, 'edit'])->name('locations.switchboard.edit');
 
     //Switchboards
     Route::get('/switchboards-create', [SwitchBoardController::class, 'create'])->name('switchboards.create');
     Route::post('/switchboards', [SwitchBoardController::class, 'store'])->name('switchboards.store');
     Route::get('/switchboards/{switchboard}', [SwitchBoardController::class, 'show'])->name('switchboards.show');
+    Route::get('/switchboards/{switchboard}/edit', [SwitchboardController::class, 'edit'])->name('switchboards.edit');
+    Route::post('/switchboards/{switchboard}', [SwitchboardController::class, 'update'])->name('switchboards.update');
+    Route::post('/switchboards/{switchboard}', [SwitchboardController::class, 'destory'])->name('switchboard.delete');
+
 
     Route::get('/switchboards/{switchboard}/switches-create', [SwitchesController::class, 'create'])->name('switchboards.switches.create');
     Route::post('/switchboards/{switchboard}/switches-create', [SwitchesController::class, 'store'])->name('switchboards.switches.store');
