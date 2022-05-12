@@ -22,9 +22,9 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('Auth/Login', [
         'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
+        // 'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
@@ -37,9 +37,6 @@ Route::get('/dashboard', function () {
 
 
 Route::group(['middleware'=>['auth:sanctum', 'verified']], function(){
-    Route::get('/topics', [TopicController::class, 'index'])->name('topics.index');
-    Route::get('/topics-create', [TopicController::class, 'create'])->name('topics.create');
-    Route::post('/topics', [TopicController::class, 'store'])->name('topics.store');
 
     //Harbours
     Route::get('/harbours', [HarbourController::class, 'index'])->name('harbours.index');
