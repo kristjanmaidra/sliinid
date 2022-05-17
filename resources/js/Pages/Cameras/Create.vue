@@ -4,14 +4,14 @@
             <div class="px-4 md:px-10 py-4 md:py-7">
                 <div class="sm:flex items-center justify-between">
                     <div class="mt-4 sm:mt-0">
-                        <button class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 inline-flex sm:ml-3 items-start justify-end px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
+                        <ButtonAdd>
                             <Link :href="route('switches.show', switches.id)" class="text-white">Tagasi</Link>
-                        </button>
+                        </ButtonAdd>
                     </div>
                 </div>
             </div>
         </div>
-        <p>Lisa kaamera</p>
+        <p class="font-semibold">Lisa kaamera</p>
         <div class="grid place-content-center mt-10">
             <form @submit.prevent="submit" enctype="multipart/form-data" class="bg-white shadow-md m-2 p-2 rounded" action="">
                 <div class="grid grid-cols-3 gap-2 sm:col-span-6">
@@ -101,6 +101,8 @@ const form = useForm({
     });
 
 const submit = () => {
-    form.post(route('cameras.store'))
+    form.post(route('switches.camera.store', props.switches.id), {
+        onSuccess: () => form.reset()
+    });
 }
 </script>

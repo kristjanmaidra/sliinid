@@ -5,9 +5,9 @@
             <div class="px-4 md:px-10 py-4 md:py-7">
                 <div class="sm:flex items-center justify-between">
                     <div class="mt-4 sm:mt-0">
-                        <button class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 inline-flex sm:ml-3 items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
+                        <ButtonAdd>
                             <Link :href="route('switches.camera.create', switches.id)" class="text-white">Lisa kaamera</Link>
-                        </button>
+                        </ButtonAdd>
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                                     <td class="border px-6 py-1">{{ camera.view_angle }}</td>
                                     <td class="border px-6 py-1">{{ camera.focus_distance }}</td>
                                     <td class="border px-6 py-1">{{ camera.description }}</td>
-                                    <td class="border px-6 py-1"><img :src="camera.image" class="w-12 h-12 rounded"></td>
+                                    <td class="border px-6 py-1"><img :src="'/storage/' + camera.image" class="w-12 h-12 rounded"></td>
                                     <td class="border flex gap-2 justify-center">
                                         <ButtonEdit>
                                             <Link :href="route('cameras.edit', camera.id)" key="camera.id" class="text-white">Muuda</Link>
@@ -58,7 +58,6 @@ export default { layoutName: "Authenticated",
     components: {
         Head,
         Link,
-        InertiaTable,
     },
     methods: {
          destroy(id) {
@@ -71,7 +70,6 @@ export default { layoutName: "Authenticated",
 };
 </script>
 <script setup>
-import InertiaTable from 'inertia-table'
 import { Head } from "@inertiajs/inertia-vue3";
 import { Link } from "@inertiajs/inertia-vue3"
 import { inject } from '@vue/runtime-core';
@@ -85,6 +83,6 @@ const props = defineProps({
         type: Object,
     }
 });
-console.log(props.cameras)
+// console.log(props.cameras)
 
 </script>

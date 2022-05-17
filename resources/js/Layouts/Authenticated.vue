@@ -29,7 +29,12 @@
                                 </NavLink>
                             </div>
                         </div>
-
+                        <div class="ml-5 inline-flex items-center justify-items-end">
+                            <form class="" action="">
+                                <Input type="text" placeholder="Otsi.." name="search" />
+                                <Button class="h-9 ml-1" type="submit">Otsi</Button>
+                            </form>
+                        </div>
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
                             <!-- Settings Dropdown -->
                             <div class="ml-3 relative">
@@ -111,6 +116,7 @@ import { inject, ref } from 'vue';
 import { Link } from '@inertiajs/inertia-vue3';
 
 const route = inject('route')
+
 
 const showingNavigationDropdown = ref(false);
 </script>
