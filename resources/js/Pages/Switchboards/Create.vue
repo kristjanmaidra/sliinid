@@ -17,7 +17,6 @@
                     <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
                     <div>
                         <Input type="text" id="" name="name" v-model="form.name" class="w-full" />
-                        <!-- <input type="hidden" name="harbour_id" value="{{ $harbour_id }}"> -->
                     </div>
                     <button type="submit" class="mt-2 px-4 py-2 bg-green-700 hover:bg-green-600 rounded-lg text-white">Lisa</button>
                 </div>

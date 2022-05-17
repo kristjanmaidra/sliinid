@@ -3,16 +3,15 @@
  <body class="px-4 py-8 flex items-center justify-center">
         <div class="max-w-4xl  xl:w-3/4 2xl:w-4/5 w-full">
             <div class="px-4 md:px-10 py-4 md:py-7">
-                <div class="sm:flex items-center justify-between">
-                    <div class="mt-4 sm:mt-0">
-                        <button class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 inline-flex sm:ml-3 items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
-                            <Link href="/harbours-create" class="text-white">Lisa sadam</Link>
-                        </button>
-                    </div>
-                </div>
+                <Breadcrumbs :items="breadcrumbs" />
             </div>
             <div class="py-4">
                 <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
+                    <div class="my-3 sm:mt-0">
+                        <ButtonAdd>
+                            <Link href="/harbours-create" class="text-white">Lisa sadam</Link>
+                        </ButtonAdd>
+                    </div>
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 bg-white border-b border-gray-200">
                             <table class="w-full whitespace-no-wrapw-full whitespace-no-wrap">
@@ -37,17 +36,24 @@
  </body>
 </template>
 <script>
-export default { layoutName: "Authenticated",
-    components: {
-        Head,
-        Link
-    }
-};
+export default { 
+    components: { Breadcrumbs }, layoutName: "Authenticated",
+  computed: {
+      breadcrumbs() {
+          return [
+              {
+                  label: "Sadamad"
+              }
+          ];
+      }
+  }
+  };
 </script>
 <script setup>
 import { Head } from "@inertiajs/inertia-vue3";
 import { Link } from "@inertiajs/inertia-vue3"
-import { inject } from '@vue/runtime-core';
+import { computed, inject } from '@vue/runtime-core';
+import Breadcrumbs from '@/js/Components/Breadcrumbs.vue';
 
 const route = inject("route")
 const props = defineProps({

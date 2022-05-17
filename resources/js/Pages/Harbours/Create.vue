@@ -1,10 +1,11 @@
 <template>
  <body class="px-4 py-8 flex flex-col items-center justify-center">
-        <div class="xl:w-3/4 2xl:w-4/5 w-full">
+        <div class="max-w-4xl  xl:w-3/4 2xl:w-4/5 w-full">
             <div class="px-4 md:px-10 py-4 md:py-7">
-                <div class="sm:flex items-center justify-between">
+                <Breadcrumbs :items="breadcrumbs" />
+                <div class=" sm:flex items-center justify-between mt-3">
                     <div class="mt-4 sm:mt-0">
-                        <button class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 inline-flex sm:ml-3 items-start justify-end px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
+                        <button class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 inline-flex items-start justify-start px-4 py-2 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
                             <Link href="/harbours" class="text-white">Tagasi</Link>
                         </button>
                     </div>
@@ -27,14 +28,33 @@
     </body>
 </template>
 <script>
-export default { layoutName: "Authenticated" };
+export default {
+  components: { Breadcrumbs }, layoutName: "Authenticated",
+  computed: {
+      breadcrumbs() {
+          return [
+              {
+                  label: "Sadamad",
+                  url: route('harbours.index')
+              },
+              {
+                  label: "Lisa sadam"
+              }
+          ];
+      }
+  }
+  };
+
 </script>
 <script setup>
 import { Head } from "@inertiajs/inertia-vue3";
 import { Link } from "@inertiajs/inertia-vue3";
 import { useForm } from '@inertiajs/inertia-vue3'
+import { computed, inject } from '@vue/runtime-core';
+import Breadcrumbs from '@/js/Components/Breadcrumbs.vue';
 
 
+const route = inject("route")
 const form = useForm({ 
       name: null,
     });

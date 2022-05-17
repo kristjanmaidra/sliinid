@@ -5,13 +5,14 @@
                 <div class="sm:flex items-center justify-between">
                     <div class="mt-4 sm:mt-0">
                         <button class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 inline-flex sm:ml-3 items-start justify-end px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
-                            <Link href="/cameras" class="text-white">Back</Link>
+                            <!-- <Link :href="route('switches.show', switches.id)" class="text-white">Back</Link> -->
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-        <h3 class="my-3">Redigeeri kaamerat</h3>
+        <h3 class="my-3 text-xl font-semibold">Muuda kaamerat</h3>
+        <p class=" flex justify-center ml-6 mb-3 text-xl font-bold text-blue-900">{{ camera.name }}</p>
         <div class="grid place-content-center mt-10">
             <form @submit.prevent="submit" class="bg-white shadow-md m-2 p-2 rounded" action="">
                 <div class="sm:col-span-6">
@@ -74,34 +75,28 @@ import { Head } from "@inertiajs/inertia-vue3"
 import { Link } from "@inertiajs/inertia-vue3"
 import { useForm } from '@inertiajs/inertia-vue3'
 import { Inertia } from '@inertiajs/inertia'
+import { inject } from '@vue/runtime-core';
+
+
+// const route = inject('route')
 
 export default { 
     components: {
         Head,
         Link
     },
-    setup(props) {
-        const form = useForm({
-              id: props.camera.id,
-              name: props.camera.name,
-              image: props.camera.image,
-              description: props.camera.description,
-              model: props.camera.model,
-              price: props.camera.price,
-              view_angle: props.camera.view_angle,
-              focus_distance: props.camera.focus_distance,
-              ip: props.camera.ip,
-              switche_id: props.camera.switche_id,
-            });
-        return {form};
-    },
     props: {
         camera: Object,
     },
 
+    setup(props) {
+        const form = useForm(props.camera);
+        return {form};
+    },
+
     methods: {
         submit() {
-            this.form.post(route('cameras.update', this.camera.id));
+            this.form.put(`/switches/${this.cameras.id}`);
         },
     },
 };

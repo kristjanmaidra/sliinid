@@ -82,7 +82,7 @@ Route::group(['middleware'=>['auth:sanctum', 'verified']], function(){
     Route::get('/cameras-create', [CameraController::class, 'create'])->name('cameras.create');
     Route::post('/cameras', [CameraController::class, 'store'])->name('cameras.store');
     Route::get('/cameras/{camera}/edit', [CameraController::class, 'edit'])->name('cameras.edit');
-    Route::post('/cameras/{camera}', [CameraController::class, 'update'])->name('cameras.update');
+    Route::put('/cameras/{camera}', [CameraController::class, 'update'])->name('cameras.update');
     Route::post('/cameras/{camera}', [CameraController::class, 'show'])->name('cameras.show');
     Route::delete('/cameras/{camera}', [CameraController::class, 'destroy'])->name('cameras.destroy');
 
