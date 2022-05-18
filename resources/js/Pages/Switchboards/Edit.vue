@@ -1,13 +1,18 @@
 <template>
     <div class="max-w-screen-lg w-full px-6 lg:mx-auto mt-12">
+        <!-- <button class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 inline-flex sm:ml-3 items-start justify-end px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
+            <Link :href="route('locations.show', location.id)" class="text-white">Tagasi</Link>
+        </button> -->
         <div class="flex flex-col w-full justify-center items-center">
-            <h1 class="text-gray-500 text-2xl mb-6">New Blog Post</h1>
-            <form class="flex flex-col w-full max-w-md gap-6" @submit.prevent="submit">
-                <div class="flex flex-col">
-                    <label for="tile">Title</label>
-                    <input class="rounded active:border-inherit" name="description" v-model="form.name" type="text">
+            <!-- <h1 class="my-3 text-xl font-semibold">Muuda kilpi</h1> -->
+            <p class=" flex justify-center ml-6 mb-3 text-xl font-bold text-blue-900">{{ switchboard.name }}</p>
+            <form  @submit.prevent="submit" class="bg-white shadow-md m-2 p-2 rounded">
+                <div class="">
+                    <input class="rounded active:border-inherit mb-2" name="name" v-model="form.name" type="text">
                 </div>
-                <button class="rounded w-full bg-gray-800 text-white font-bold uppercase px-2 py-1" type="submit">Submit</button>
+                <ButtonEdit type>
+                    Muuda
+                </ButtonEdit>
             </form>
         </div>
     </div>
@@ -16,40 +21,31 @@
 
 import { useForm } from '@inertiajs/inertia-vue3'
 import { inject } from '@vue/runtime-core';
+import { Head } from "@inertiajs/inertia-vue3"
+import { Link } from "@inertiajs/inertia-vue3"
 
 export default { 
     components: {
+        Head,
+        Link
    },
     setup(props) {
         const form = useForm({
-              id: props.switchboard.id,
-              name: props.switchboard.name,
+            id: props.switchboard.id,
+            name: props.switchboard.name,
             });
         return {form};
     },
+
     props: {
-        camera: Object,
+        switchboard: Object,
     },
 
     methods: {
         submit() {
-            this.form.post(route('switchboard.update', this.switchboard.id));
+            this.form.post(route('switchboards.update', this.switchboard.id));
         },
     },
 };
-// const props = defineProps({
-//     switchboard:{
-//         type: Object,
-//         default: null
-//     }
-// })
-// const route = inject('route')
-// const form = useForm({
-//       id: props.switchboard.id,
-//       name: props.switchboard.name,
-//     });
 
-// const submit = () => {
-//     form.post(route("location.show", props.switchboard.id));
-// }
 </script>

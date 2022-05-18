@@ -93,19 +93,19 @@ class CameraController extends Controller
     public function update(Request $request, Camera $camera)
     {
 
-        $data = Request::validate([
-                'name' => ['required'],
-                'ip' => ['required'],
-                'image' => ['nullable', 'image'],
-                'model' => ['required'],
-                'price' => ['required'],
-                'view_angle' => ['required'],
-                'focus_distance' => ['required'],
-                'description' => ['required'],
-            ]);
-
-        $camera->update($data);
-
+        $camera->update($request->validate([
+                'name' => 'required',
+                'ip' => 'required',
+                'username' => 'required',
+                'password' => 'required',
+                'image' => 'required',
+                'location' => 'required',
+                'model' => 'required',
+                'price' => 'required',
+                'view_angle' => 'required',
+                'focus_distance' => 'required',
+                'description' => 'required',
+            ]));
             
             // if ($request->file('image')) {
             //     $camera->update(['image' => Request::file('image')->store('cameras', 'public')]);

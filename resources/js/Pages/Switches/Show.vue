@@ -4,16 +4,16 @@
         <div class="xl:w-3/4 2xl:w-4/5 w-full">
             <div class="px-4 md:px-10 py-4 md:py-7">
                 <div class="sm:flex items-center justify-between">
+                </div>
+            </div>
+            <div class="">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="mt-4 sm:mt-0">
                         <ButtonAdd>
                             <Link :href="route('switches.camera.create', switches.id)" class="text-white">Lisa kaamera</Link>
                         </ButtonAdd>
                     </div>
-                </div>
-            </div>
-            <div class="">
-                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white">
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white mt-4">
                             <table class="w-full text-sm text-left text-gray-900 dark:text-gray-900">
                                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr class="text-center font-bold">
