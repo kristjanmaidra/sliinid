@@ -2,7 +2,6 @@
  <body class="px-4 py-8 flex flex-col items-center justify-center">
         <div class="max-w-4xl  xl:w-3/4 2xl:w-4/5 w-full">
             <div class="px-4 md:px-10 py-4 md:py-7">
-                <Breadcrumbs :items="breadcrumbs" />
                 <div class=" sm:flex items-center justify-between mt-3">
                     <div class="mt-4 sm:mt-0">
                         <button class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 inline-flex items-start justify-start px-4 py-2 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
