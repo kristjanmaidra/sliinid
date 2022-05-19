@@ -2,22 +2,17 @@
  <Head title="Switchboards" />
  <body class="px-4 py-8 flex items-center justify-center">
         <div class="max-w-4xl  xl:w-3/4 2xl:w-4/5 w-full">
-            <div class="px-4 md:px-10 py-4 md:py-7">
-                <Breadcrumbs :items="breadcrumbs" />
-                <div class="sm:flex items-center justify-between mt-3">
-                </div>
-            </div>
+            <p class=" flex justify-center ml-6 mb-3 text-xl font-bold text-blue-900">{{ location.name }}</p>
             <div class="py-12">
                 <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
                     <div class="my-3 sm:mt-0">
-                        <button class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 inline-flex sm:ml-3 items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
+                        <ButtonAdd>
                             <Link :href="route('locations.switchboard.create', location.id)" class="text-white">Lisa kilp</Link>
-                        </button>
+                        </ButtonAdd>
                     </div>
-                    <p class=" flex justify-center ml-6 mb-3 text-xl font-bold text-blue-900">{{ location.name }}</p>
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 ">
-                            <table class="w-full whitespace-no-wrapw-full whitespace-no-wrap">
+                            <table class="w-full text-sm text-left text-gray-900 dark:text-gray-900">
                                 <thead>
                                     <tr class="font-bold">
                                         <td class="text-gray-700 text-base">Kilp</td>
@@ -34,7 +29,7 @@
                                             <Link :href="route('switchboards.edit', switchboard.id)" key="switchboard.id" >Muuda</Link>
                                         </ButtonEdit>
                                         <ButtonDelete @click="destroy(switchboard.id)">
-                                            <Link class="bg-red-500 text-white font-bold text-sm uppercase px-2 py-1 rounded" as="buttton" method="post" :href="route('switchboard.delete', switchboard.id)">Delete</Link>
+                                            Eemalda
                                         </ButtonDelete>
                                     </td>
                                 </tr>
@@ -62,7 +57,14 @@ export default { layoutName: "Authenticated",
                 },
             ];
         }
-    }
+    },
+    methods: {
+         destroy(id) {
+            if (confirm('Oled sa kindel, et tahad sidekilpi eemaldada?')) {
+                this.$inertia.delete(route("switchboards.destroy", id));
+            }
+        }
+    },
 };
 </script>
 <script setup>

@@ -14,7 +14,7 @@
         <div class="grid place-content-center mt-10">
             <form @submit.prevent="submit" class="bg-white shadow-md m-2 p-2 rounded" action="">
                 <div class="sm:col-span-6">
-                    <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                    <label for="name" class="block text-sm font-medium text-gray-700">Nimi</label>
                     <div>
                         <Input type="text" id="" name="name" v-model="form.name" class="w-full" />
                     </div>

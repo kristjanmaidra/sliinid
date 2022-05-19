@@ -13,7 +13,22 @@ class SwitchesController extends Controller
     
     public function index()
     {
-        //
+        return Inertia::render('Switches/Index', [
+            'switches' => Switches::all()->map(function($switches) {
+                return [
+                    'ip' => $switches->ip,
+                    'name' => $switches->name,
+                    'username' => $switches->username,
+                    'password' => $switches->password,
+                    'model' => $switches->model,
+                    'devices' => $switches->devices,
+                    'switch_ports' => $switches->switch_ports,
+                    'description' => $switches->description,
+                    'ports' => $switches->ports,
+                    'image' => asset('storage/'. $switches->image),
+                ];
+            })
+        ]);
     }
 
    
@@ -29,8 +44,8 @@ class SwitchesController extends Controller
     {
         $image = $request->file('image')->store('switches', 'public');
         $switchboard->switches()->create([
-            'name' => $request->name,
             'ip' => $request->ip,
+            'name' => $request->name,
             'username' => $request->username,
             'password' => $request->password,
             'model' => $request->model,

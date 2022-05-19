@@ -1,5 +1,5 @@
 <template>
- <Head title="Cameras" />
+ <Head title="Switches" />
  <body class="py-10 flex items-center justify-center">
         <div class="pt-8 xl:w-3/4 2xl:w-4/5 w-full">
             <div class="">
@@ -10,32 +10,30 @@
                                     <tr class="text-center font-bold">
                                         <td class="border">Nimi</td>
                                         <td class="border">IP</td>
-                                        <td class="border">Kasutajaimi</td>
-                                        <td class="border">Parool</td>
                                         <td class="border">Mudel</td>
-                                        <td class="border">Hind</td>
-                                        <td class="border">Vaatenurk</td>
-                                        <td class="border">Fookuskaugus</td>
-                                        <td class="border">Kirjeldus</td>
+                                        <td class="border">Parool</td>
+                                        <td class="border">Kasutajanimi</td>
+                                        <td class="border">Seadmed</td>
+                                        <td class="border">Pordid</td>
+                                        <td class="border">Kirjeldus</td> 
                                         <td class="border">Pilt</td>
                                     </tr>
                                 </thead>
-                                <tr v-for="camera in cameras" :key="camera.id" class="">
+                                <tr v-for="switches in switches" :key="switches.id" class="">
                                     <!-- <td class="border px-6 py-1">
-                                        <Link class="" :href="`/cameras/${camera.id}/edit`">
-                                        {{ camera.name }}
+                                        <Link class="" :href="`/switches/${switches.id}/edit`">
+                                        {{ switches.name }}
                                         </Link>
                                     </td> -->
-                                    <td class="border px-6 py-1">{{ camera.name }}</td>
-                                    <td class="border px-6 py-1">{{ camera.ip }}</td>
-                                    <td class="border px-6 py-1">{{ camera.username }}</td>
-                                    <td class="border px-6 py-1">{{ camera.password }}</td>
-                                    <td class="border px-6 py-1">{{ camera.model }}</td>
-                                    <td class="border px-6 py-1">{{ camera.price }}</td>
-                                    <td class="border px-6 py-1">{{ camera.view_angle }}</td>
-                                    <td class="border px-6 py-1">{{ camera.focus_distance }}</td>
-                                    <td class="border px-6 py-1">{{ camera.description }}</td>
-                                    <td class="border px-6 py-1"><img :src="camera.image" class="w-12 h-12 rounded"></td>
+                                    <td class="border px-6 py-1">{{ switches.name }}</td>
+                                    <td class="border px-6 py-1">{{ switches.ip }}</td>
+                                    <td class="border px-6 py-1">{{ switches.model }}</td>
+                                    <td class="border px-6 py-1">{{ switches.password }}</td>
+                                    <td class="border px-6 py-1">{{ switches.username }}</td>
+                                    <td class="border px-6 py-1">{{ switches.devices }}</td>
+                                    <td class="border px-6 py-1">{{ switches.ports }}</td>
+                                    <td class="border px-6 py-1">{{ switches.description }}</td>
+                                    <td class="border px-6 py-1"><img :src="switches.image" class="w-12 h-12 rounded"></td>
                                     <!-- <td class="border flex gap-2 justify-center">
                                         <ButtonEdit>
                                             <Link :href="route('cameras.edit', camera.id)" key="camera.id" class="text-white">Muuda</Link>
@@ -60,9 +58,8 @@ export default { layoutName: "Authenticated",
     },
     methods: {
          destroy(id) {
-            if (confirm('Oled sa kindel, et tahad kaamerat eemaldada?')) {
-                // this.$inertia.delete(`/cameras/${id}`)
-                this.$inertia.delete(route("cameras.destroy", id));
+            if (confirm()) {
+                this.$inertia.delete(route("switches.destroy", id));
             }
         }
     },
@@ -72,7 +69,9 @@ export default { layoutName: "Authenticated",
 import { Head } from "@inertiajs/inertia-vue3";
 import { Link } from "@inertiajs/inertia-vue3"
 
-defineProps({
-  cameras: Array
-})
+const props = defineProps({
+    switches: {
+        type: Array, 
+    },
+});
 </script>

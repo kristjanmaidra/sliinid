@@ -19,25 +19,25 @@
                         <div class="p-6 ">
                             <table class="w-full whitespace-no-wrapw-full whitespace-no-wrap">
                                 <thead>
-                                    <tr class="font-bold">
+                                    <tr class="text-center font-bold">
                                         <td class=" px-6 py-4 text-gray-700 text-base">Asukoht</td>
-                                        <td class=" px-6 py-4 text-gray-700 text-base"></td>
+                                        <!-- <td class=" px-6 py-4 text-gray-700 text-base"></td> -->
                                     </tr>
                                 </thead>
                                 <tr class="border-b-2 border-t-2" v-for="location in locations" :key="location.id">
                                     <td class="">
-                                        <Link class="p-1 justify-center hover:bg-blue-200" :href="route('locations.show', location.id)" key="location.id">
+                                        <Link class="flex items-center p-1 justify-center hover:bg-blue-200 text-sm font-semibold" :href="route('locations.show', location.id)" key="location.id">
                                             {{ location.name }}
                                         </Link>
                                     </td>
-                                    <td class=" flex justify-end">
+                                    <!-- <td class=" flex justify-end">
                                         <ButtonEdit class="mr-2">
                                             <Link >Muuda</Link>
                                         </ButtonEdit>
                                         <ButtonDelete @click="destroy(location.id)">
                                             Eemalda
                                         </ButtonDelete>
-                                    </td>
+                                    </td> -->
                                 </tr>
                             </table>
                         </div>

@@ -47,24 +47,21 @@ class SwitchBoardController extends Controller
     
     public function edit(SwitchBoard $switchboard)
     {
-        return Inertia::render('Switchboards/Edit', compact('switchboard'));
-        // return Inertia::render('Switchboards/Edit', [
-        //     'switchboard' => [
-        //         'id' => $switchboard->id,
-        //         'name' => $switchboard->name,
-        //     ],
-        // ]);
+        return Inertia::render('Switchboards/Edit', [
+            'switchboard' => [
+                'id' => $switchboard->id,
+                'name' => $switchboard->name,
+            ],
+        ]);
     }
-
     
     public function update(Request $request, SwitchBoard $switchboard)
     {
-        // $data = upda
+        $switchboard->update($request->validate([
+            'name' => 'required'
+        ]));
 
-        // $switchboard->update($request->validate([
-        //     'name' => 'required',
-        // ]));
-        // return Redirect::back();
+        return Redirect::back();
     }
 
     

@@ -21,20 +21,20 @@
                                 <NavLink :href="route('harbours.index')" :active="route().current('harbours.index')">
                                     Sadamad
                                 </NavLink>
-                                <!-- <NavLink :href="route('locations.index')" :active="route().current('locations.index')">
-                                    Asukohad
-                                </NavLink> -->
                                 <NavLink :href="route('cameras.index')" :active="route().current('cameras.index')">
                                     Kaamerad
                                 </NavLink>
+                                <NavLink :href="route('switches.index')" :active="route().current('switches.index')">
+                                    Switchid
+                                </NavLink>
                             </div>
                         </div>
-                        <div class="ml-5 inline-flex items-center justify-items-end">
+                        <!-- <div class="ml-5 inline-flex items-center justify-items-end">
                             <form class="" action="">
                                 <Input type="text" placeholder="Otsi.." name="search" />
                                 <Button class="h-9 ml-1" type="submit">Otsi</Button>
                             </form>
-                        </div>
+                        </div> -->
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
                             <!-- Settings Dropdown -->
                             <div class="ml-3 relative">
