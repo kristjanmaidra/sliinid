@@ -19,6 +19,8 @@
                                     <tr class="text-center font-bold">
                                         <td class="border">Nimi</td>
                                         <td class="border">IP</td>
+                                        <td class="border">Kasutajaimi</td>
+                                        <td class="border">Parool</td>
                                         <td class="border">Mudel</td>
                                         <td class="border">Hind</td>
                                         <td class="border">Vaatenurk</td>
@@ -29,15 +31,17 @@
                                     </tr>
                                 </thead>
                                 <tr v-for="camera in cameras" :key="camera.id" class="">
-                                    <td class="border px-6 py-1">{{ camera.name }}</td>
+                                     <td class="border px-6 py-1">{{ camera.name }}</td>
                                     <td class="border px-6 py-1">{{ camera.ip }}</td>
+                                    <td class="border px-6 py-1">{{ camera.username }}</td>
+                                    <td class="border px-6 py-1">{{ camera.password }}</td>
                                     <td class="border px-6 py-1">{{ camera.model }}</td>
                                     <td class="border px-6 py-1">{{ camera.price }}</td>
                                     <td class="border px-6 py-1">{{ camera.view_angle }}</td>
                                     <td class="border px-6 py-1">{{ camera.focus_distance }}</td>
                                     <td class="border px-6 py-1">{{ camera.description }}</td>
                                     <td class="border px-6 py-1"><img :src="'/storage/' + camera.image" class="w-12 h-12 rounded"></td>
-                                    <td class="border flex gap-2 justify-center">
+                                    <td class=" flex gap-2 py-3 items-center justify-center">
                                         <ButtonEdit>
                                             <Link :href="route('cameras.edit', camera.id)" key="camera.id" class="text-white">Muuda</Link>
                                         </ButtonEdit>

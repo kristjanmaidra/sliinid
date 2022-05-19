@@ -71,18 +71,47 @@ class SwitchesController extends Controller
    
     public function edit(Switches $switches)
     {
-        //
+        return Inertia::render('Switches/Edit', [
+            'switches' => [
+                'id' => $switches->id,
+                'ip' => $switches->ip,
+                'name' => $switches->name,
+                'username' => $switches->username,
+                'password' => $switches->password,
+                'model' => $switches->model,
+                'devices' => $switches->devices,
+                'switch_ports' => $switches->switch_ports,
+                'description' => $switches->description,
+                'ports' => $switches->ports,
+                'image' => $switches->image,
+                ]
+            ]);
     }
 
     
     public function update(Request $request, Switches $switches)
     {
-        //
+        $switches->update($request->validate([
+            'ip' => 'required',
+            'name' => 'required',
+            'username' => 'required',
+            'password' => 'required',
+            'model' => 'required',
+            'image' => 'required',
+            'devices' => 'required',
+            'switch_ports' => 'required',
+            'ports' => 'required',
+            'description' => 'required',
+        ]));
+
+        return Redirect::back();
+
     }
 
     
     public function destroy(Switches $switches)
     {
-        //
+        $switches->delete();
+        return redirect()->back();
     }
 }

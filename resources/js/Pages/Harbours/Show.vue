@@ -2,11 +2,11 @@
  <Head title="Locations" />
  <body class="px-4 py-8 flex items-center justify-center">
         <div class="max-w-4xl  xl:w-3/4 2xl:w-4/5 w-full">
-            <div class="px-4 md:px-10 py-4 md:py-7">
+            <!-- <div class="px-4 md:px-10 py-4 md:py-7">
                 <Breadcrumbs :items="breadcrumbs" />
                 <div class="sm:flex items-center justify-between">
                 </div>
-            </div>
+            </div> -->
             <div class="py-12">
                 <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
                     <p class=" flex justify-center ml-6 mb-3 text-xl font-bold text-blue-900">{{ harbour.name }}</p>

@@ -2,15 +2,15 @@
  <Head title="Switchboards" />
  <body class="px-4 py-8 flex items-center justify-center">
         <div class="max-w-4xl  xl:w-3/4 2xl:w-4/5 w-full">
-            <p class=" flex justify-center ml-6 mb-3 text-xl font-bold text-blue-900">{{ switchboard.name }}</p>
             <div class="py-12">
                 <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
-                    <div class="mt-4 sm:mt-0">
+                    <p class=" flex justify-center ml-6 mb-3 text-xl font-bold text-blue-900">{{ switchboard.name }}</p>
+                    <div class="mt-4 mb-2 sm:mt-0">
                         <ButtonAdd>
                             <Link :href="route('switchboards.switches.create', switchboard.id)" class="text-white">Lisa switch</Link>
                         </ButtonAdd>
                     </div>
-                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white mt-4">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <table class="w-full text-sm text-left text-gray-900 dark:text-gray-900">
                             <thead>
                                 <tr class="font-bold">
@@ -28,7 +28,7 @@
                                 </tr>
                             </thead>
                             <tr class="border-b-2 border-t-2" v-for="switches in switches" :key="switches.id">
-                                <td class=" px-6 py-1">
+                                <td class="px-6 py-1">
                                     <Link class="hover:bg-blue-200" :href="route('switches.show', switches.id)" key="switches.id">
                                         {{ switches.name }}
                                     </Link>
@@ -42,13 +42,13 @@
                                 <td class=" px-6 py-1">{{ switches.switch_ports }}</td>
                                 <td class=" px-6 py-1">{{ switches.description }}</td>
                                 <td class=" px-6 py-1"><img :src="switches.image" class="w-12 h-12 rounded"></td> -->
-                                <td class=" flex gap-2 justify-center">
-                                <!-- <ButtonEdit>
-                                    <Link :href="route('switches.edit', switches.id)" key="switches.id" class="text-white">Muuda</Link>
-                                </ButtonEdit> -->
-                                <ButtonDelete @click="destroy(switches.id)">
-                                    Eemalda
-                                </ButtonDelete>
+                                <td class=" flex gap-2 justify-end px-2 ">
+                                    <ButtonEdit>
+                                        <Link :href="route('switches.edit', switches.id)" key="switches.id" class="text-white">Muuda</Link>
+                                    </ButtonEdit>
+                                    <ButtonDelete @click="destroy(switches.id)">
+                                        Eemalda
+                                    </ButtonDelete>
                                 </td>
                             </tr>
                         </table>
@@ -63,7 +63,14 @@ export default { layoutName: "Authenticated",
     components: {
         Head,
         Link
-    }
+    },
+    methods: {
+         destroy(id) {
+            if (confirm('Oled sa kindel, et tahad switchi eemaldada?')) {
+                this.$inertia.delete(route("switches.destroy", id));
+            }
+        }
+    },
 };
 </script>
 <script setup>
