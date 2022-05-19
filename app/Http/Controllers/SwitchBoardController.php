@@ -54,7 +54,6 @@ class SwitchBoardController extends Controller
             ],
         ]);
     }
-
     
     public function update(Request $request, SwitchBoard $switchboard)
     {
@@ -62,8 +61,7 @@ class SwitchBoardController extends Controller
             'name' => 'required'
         ]));
 
-        return redirect()->back();
-        // return Redirect::back();
+        return Redirect::back();
     }
 
     

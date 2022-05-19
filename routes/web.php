@@ -70,6 +70,7 @@ Route::group(['middleware'=>['auth:sanctum', 'verified']], function(){
     Route::post('/switchboards/{switchboard}/switches-create', [SwitchesController::class, 'store'])->name('switchboards.switches.store');
     
     //Switches
+    Route::get('/switches', [SwitchesController::class, 'index'])->name('switches.index');
     Route::get('/switches-create', [SwitchesController::class, 'create'])->name('switches.create');
     Route::post('/switches', [SwitchesController::class, 'store'])->name('switches.store');
     Route::get('/switches/{switches}', [SwitchesController::class, 'show'])->name('switches.show');
@@ -79,11 +80,11 @@ Route::group(['middleware'=>['auth:sanctum', 'verified']], function(){
     
     //Cameras
     Route::get('/cameras', [CameraController::class, 'index'])->name('cameras.index');
-    Route::get('/cameras-create', [CameraController::class, 'create'])->name('cameras.create');
     Route::post('/cameras', [CameraController::class, 'store'])->name('cameras.store');
+    Route::get('/cameras-create', [CameraController::class, 'create'])->name('cameras.create');
+    Route::post('/cameras/{camera}', [CameraController::class, 'show'])->name('cameras.show');
     Route::get('/cameras/{camera}/edit', [CameraController::class, 'edit'])->name('cameras.edit');
     Route::post('/cameras/{camera}', [CameraController::class, 'update'])->name('cameras.update');
-    Route::post('/cameras/{camera}', [CameraController::class, 'show'])->name('cameras.show');
     Route::delete('/cameras/{camera}', [CameraController::class, 'destroy'])->name('cameras.destroy');
 
     // Route::get('/cameras/{camera}/switches-create', [CameraController::class, 'create'])->name('cameras.switches.create');

@@ -74,7 +74,8 @@
 import { Head } from "@inertiajs/inertia-vue3"
 import { Link } from "@inertiajs/inertia-vue3"
 import { useForm } from '@inertiajs/inertia-vue3'
-import { Inertia } from '@inertiajs/inertia'
+import { inject } from '@vue/runtime-core';
+
 
 
 export default { 

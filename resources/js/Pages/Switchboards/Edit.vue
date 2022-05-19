@@ -10,7 +10,7 @@
                 <div class="">
                     <input class="rounded active:border-inherit mb-2" name="name" v-model="form.name" type="text">
                 </div>
-                <ButtonEdit type>
+                <ButtonEdit>
                     Muuda
                 </ButtonEdit>
             </form>

@@ -24,4 +24,9 @@ class Location extends Model
     {
         return $this->hasMany(SwitchBoard::class);
     }
+
+    public function cameras()
+    {
+        return $this->hasMany(Camera::class);
+    }
 }

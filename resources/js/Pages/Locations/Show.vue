@@ -6,13 +6,13 @@
             <div class="py-12">
                 <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
                     <div class="my-3 sm:mt-0">
-                        <button class="focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 inline-flex sm:ml-3 items-start justify-start px-6 py-3 bg-indigo-700 hover:bg-indigo-600 focus:outline-none rounded">
+                        <ButtonAdd>
                             <Link :href="route('locations.switchboard.create', location.id)" class="text-white">Lisa kilp</Link>
-                        </button>
+                        </ButtonAdd>
                     </div>
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 ">
-                            <table class="w-full whitespace-no-wrapw-full whitespace-no-wrap">
+                            <table class="w-full text-sm text-left text-gray-900 dark:text-gray-900">
                                 <thead>
                                     <tr class="font-bold">
                                         <td class="text-gray-700 text-base">Kilp</td>

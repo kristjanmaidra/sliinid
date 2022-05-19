@@ -13,11 +13,17 @@ class CameraController extends Controller
    
     public function index()
     {
+        // $cameras = Camera::with('locations')->get();
+        // return Inertia::render('Cameras/Index', compact('cameras'));
+
+
         return Inertia::render('Cameras/Index', [
             'cameras' => Camera::all()->map(function($camera) {
                 return [
                     'ip' => $camera->ip,
                     'name' => $camera->name,
+                    'username' => $camera->username,
+                    'password' => $camera->password,
                     'description' => $camera->description,
                     'image' => asset('storage/'. $camera->image),
                     'model' => $camera->model,
@@ -84,13 +90,13 @@ class CameraController extends Controller
                 'view_angle' => $camera->view_angle,
                 'focus_distance' => $camera->focus_distance,
                 'description' => $camera->description,
-            ]
-        ]);
-
-    }
-
- 
-    public function update(Request $request, Camera $camera)
+                ]
+            ]);
+            
+        }
+        
+        
+    public function update(Request $request, Camera $camera, Switches $switches)
     {
 
         $camera->update($request->validate([
@@ -114,7 +120,8 @@ class CameraController extends Controller
             // if($request->file('image')) {
             //     $post->image = $this->upload($request);
 
-            return Redirect::route('switches.show');
+            // return Redirect::route('switches.show', $switches);
+            return Redirect::back();
     }
 
     

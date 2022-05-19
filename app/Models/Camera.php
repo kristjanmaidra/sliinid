@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Switches;
+use App\Models\Location;
 
 
 class Camera extends Model
@@ -13,11 +14,15 @@ class Camera extends Model
 
 
     protected $guarded = [];
-    // protected $fillable = ['name', 'switches_id', 'image','username', 'password', 'location',  'model', 'price', 'view_angle', 'focus_distance', 'description', 'ip'];
 
     public function switches()
     {
         return $this->belongsTo(Switches::class);
+    }
+
+    public function locations() 
+    {
+        return $this->belongsTo(Location::class);
     }
 
 }
