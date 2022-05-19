@@ -18,7 +18,7 @@ return new class extends Migration
 
         Schema::create('cameras', function (Blueprint $table) {
             $table->id();
-            $table->integer('ip');
+            $table->binary('ip');
             $table->string('name');
             $table->string('model');
             $table->string('username');
