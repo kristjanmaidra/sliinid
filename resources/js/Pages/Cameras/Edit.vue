@@ -28,6 +28,18 @@
                     </div>
                 </div>
                 <div class="sm:col-span-6">
+                    <label for="name" class="block text-sm font-medium text-gray-700">Kasutajaimi</label>
+                    <div>
+                        <input type="text" id="title" name="name" v-model="form.username" class="block w-full transition duration-150 ease-in-out">
+                    </div>
+                </div>
+                <div class="sm:col-span-6">
+                    <label for="name" class="block text-sm font-medium text-gray-700">Parool</label>
+                    <div>
+                        <input type="text" id="title" name="name" v-model="form.password" class="block w-full transition duration-150 ease-in-out">
+                    </div>
+                </div>
+                <div class="sm:col-span-6">
                     <label for="name" class="block text-sm font-medium text-gray-700">Hind</label>
                     <div>
                         <input type="text" id="title" name="name" v-model="form.price" class="block w-full transition duration-150 ease-in-out">

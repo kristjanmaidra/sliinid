@@ -2,9 +2,9 @@
  <Head title="Harbours" />
  <body class="px-4 py-8 flex items-center justify-center">
         <div class="max-w-4xl  xl:w-3/4 2xl:w-4/5 w-full">
-            <div class="px-4 md:px-10 py-4 md:py-7">
+            <!-- <div class="px-4 md:px-10 py-4 md:py-7">
                 <Breadcrumbs :items="breadcrumbs" />
-            </div>
+            </div> -->
             <div class="py-4">
                 <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
                     <div class="my-3 sm:mt-0">

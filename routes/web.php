@@ -74,6 +74,10 @@ Route::group(['middleware'=>['auth:sanctum', 'verified']], function(){
     Route::get('/switches-create', [SwitchesController::class, 'create'])->name('switches.create');
     Route::post('/switches', [SwitchesController::class, 'store'])->name('switches.store');
     Route::get('/switches/{switches}', [SwitchesController::class, 'show'])->name('switches.show');
+    Route::get('/switches/{switches}/edit', [SwitchesController::class, 'edit'])->name('switches.edit');
+    Route::post('/switches/{switches}', [SwitchesController::class, 'update'])->name('switches.update');
+    Route::delete('/switches/{switches}', [SwitchesController::class, 'destroy'])->name('switches.destroy');
+
 
     Route::get('/switches/{switches}/camera-create', [CameraController::class, 'create'])->name('switches.camera.create');
     Route::post('/switches/{switches}/camera-create', [CameraController::class, 'store'])->name('switches.camera.store');
