@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('switches', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('ip');
+            $table->binary('ip');
             $table->string('model');
             $table->string('ports');
             $table->string('switch_ports'); //parent switch
